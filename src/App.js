@@ -27,7 +27,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          {setInterval(function(){setRandomNumber(Math.floor(Math.random()*1000))},1000)}
+          {randoNumber}
+        </p>
+        <p style={{visibility: "hidden"}}>
+            {setInterval(function(){
+              let temp=Math.floor(Math.random()*1000);
+                console.log(temp);
+                setRandomNumber(temp);
+            },2000)}
         </p>
       </header>
     </div>
