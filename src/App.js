@@ -1,43 +1,27 @@
 import logo from './2024-10-05.png';
 import './App.css';
-import anime from "animejs";
 import React,{useEffect,useState} from "react";
-
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
 
 
 function App() {
 
-  const [animationRef,setAnimationRef]=useState();
-  const [randoNumber, setRandomNumber]=useState(0);
-
-  useEffect(() =>
-  {
-    setAnimationRef(
-      anime({
-        targets: 'div',
-        //translateX: 250,
-        rotate: '2turn',
-        backgroundColor: '#FFF',
-        duration: anime.stagger(2000),
-        loop: true
-      })
-    );
-  },[]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          {randoNumber}
-        </p>
-        <p style={{visibility: "hidden"}}>
-            {setInterval(function(){
-              let temp=Math.floor(Math.random()*1000);
-                console.log(temp);
-                setRandomNumber(temp);
-            },2000)}
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Blogs />}>
+          <Route index element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

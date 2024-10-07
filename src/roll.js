@@ -6,6 +6,21 @@ function Roll(){
 
      return (<>
 
+          <input
+               type="number"
+               value={facesOnDie}
+               onChange={(e) => setFacesOnDie(e.target.value)}
+          />
+          <input
+               type="number"
+               value={numberOfDice}
+               onChange={(e) => setNumberOfDice(e.target.value)}
+          />
+          <input
+               type="number"
+               value={modifier}
+               onChange={(e) => setModifier(e.target.value)}
+          />
           <button>Roll</button>
 
      </>);
